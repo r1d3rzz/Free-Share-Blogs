@@ -10,9 +10,6 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -28,11 +25,18 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <form action="/user/login">
+                        <button class="nav-link btn btn-link" tabindex="-1">Login</button>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <form action="/user/signup" method="POST">@csrf
+                        <button class="nav-link btn btn-link" tabindex="-1">Sign Up</button>
+                    </form>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" value="{{request('search')}}" name="search" type="search"
+            <form class="d-flex" action="/?search={{request('search')}}">
+                <input class="form-control me-2" name="search" value="{{request('search')}}" type="search"
                     placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,10 @@ Route::controller(BlogController::class)->group(function(){
     Route::get('/','index');
     Route::get('/blogs/{blog:slug}','show');
     Route::get('/blog/back','blogBack');
+});
+
+//for User Login/out and SignUp Routes
+Route::controller(UserController::class)->group(function(){
+    Route::get('/user/login','login');
+    Route::post('/user/signup','signup');
 });
