@@ -10,10 +10,11 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
+                @auth
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
+                        {{strtoupper(substr(auth()->user()->name,0,1))}}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#">Action</a></li>
@@ -21,19 +22,25 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li>
+                            <form action="/user/logout">
+                                <button class="btn btn-link dropdown-item">Logout</button>
+                            </form>
+                        </li>
                     </ul>
                 </li>
+                @else
                 <li class="nav-item">
                     <form action="/user/login">
                         <button class="nav-link btn btn-link" tabindex="-1">Login</button>
                     </form>
                 </li>
                 <li class="nav-item">
-                    <form action="/user/signup" method="POST">@csrf
+                    <form action="/user/signup">
                         <button class="nav-link btn btn-link" tabindex="-1">Sign Up</button>
                     </form>
                 </li>
+                @endauth
             </ul>
             <form class="d-flex" action="/?search={{request('search')}}">
                 <input class="form-control me-2" name="search" value="{{request('search')}}" type="search"
