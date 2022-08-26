@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
@@ -16,7 +17,7 @@ class UserController extends Controller
     public function logout()
     {
         auth()->logout();
-        return redirect('/');
+        return redirect('/')->with('logout','See Ya Soon Again...');
     }
 
     public function signup()
@@ -46,7 +47,7 @@ class UserController extends Controller
             }else{
                 $user = User::create($formData);
                 auth()->login($user);
-                return redirect('/');
+                return redirect('/')->with('success','Welcome '.$formData['name']);
             }
         }
     }
@@ -63,7 +64,7 @@ class UserController extends Controller
                 'email' => 'Email or Password is Wrong',
             ]);
         }else{
-            return redirect('/');
+            return redirect('/')->with('login','Welcome Back '.Auth::user()->name);
         }
     }
 }

@@ -10,11 +10,17 @@
     <title>{{$title}}</title>
 </head>
 
-<body class="bg-light">
+<body class="bg-light" id="body">
 
     <div class="container">
 
         <x-nav />
+
+        <x-noti_banner name="success" color="success" />
+
+        <x-noti_banner name="login" />
+
+        <x-noti_banner name="logout" color="danger" />
 
         {{$slot}}
 

@@ -17,7 +17,7 @@ class BlogController extends Controller
     {
         return view('blogs.show',[
             'blog' => $blog,
-            'randomBlogs' => Blog::inRandomOrder()->take(3)->get(),
+            'randomBlogs' => Blog::inRandomOrder()->take(6)->get(),
         ]);
     }
 }
