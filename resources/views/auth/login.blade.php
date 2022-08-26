@@ -40,6 +40,11 @@
                                             <button type="submit" class="btn btn-primary btn-lg">Login</button>
                                         </div>
 
+                                        <div class="text-center">
+                                            You Have no Account? <a href="/user/signup"
+                                                class="text-decoration-none">Sign Up</a> Here.
+                                        </div>
+
                                     </form>
 
                                 </div>

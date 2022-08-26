@@ -10,6 +10,7 @@
                 <p>Category - <a href="/?category={{$blog->category->slug}}"
                         class="link-success text-decoration-none">{{$blog->category->name}}</a></p>
             </b>
+
             <p>{{$blog->body}}</p>
 
             <div class="d-flex justify-content-end">
@@ -22,4 +23,7 @@
             {{$blog->created_at->diffForHumans()}}
         </div>
     </x-card-wrapper>
+
+    <x-comments />
+
 </section>
