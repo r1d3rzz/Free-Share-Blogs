@@ -24,6 +24,6 @@
         </div>
     </x-card-wrapper>
 
-    <x-comments />
+    <x-comments :blog="$blog" :comments="$blog->comments()->latest()->get()" />
 
 </section>

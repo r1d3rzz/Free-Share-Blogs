@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,3 +31,6 @@ Route::controller(UserController::class)->group(function(){
     Route::post('/user/register','register');
     Route::post('/user/post_login','post_login');
 });
+
+//for User Comments
+Route::post('/blogs/{blog:id}/comments',[CommentController::class,'store']);
