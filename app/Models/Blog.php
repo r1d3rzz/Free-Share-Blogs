@@ -9,6 +9,15 @@ class Blog extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'slug',
+        'intro',
+        'body',
+        'user_id',
+        'category_id',
+    ];
+
     public function scopeFilter($query,$filter)
     {
         // dd($filter['search']);

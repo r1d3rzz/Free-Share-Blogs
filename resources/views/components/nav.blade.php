@@ -29,6 +29,9 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="/blog/create" class="nav-link">Create Blogs</a>
+                </li>
                 @else
                 <li class="nav-item">
                     <form action="/user/login">

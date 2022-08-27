@@ -20,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::controller(BlogController::class)->group(function(){
     Route::get('/','index');
     Route::get('/blogs/{blog:slug}','show');
-    Route::get('/blog/back','blogBack');
+    Route::get('/blog/create','create')->middleware('auth');
+    Route::post('/blog/store','store')->middleware('auth');
 });
 
 //for User Login/out and SignUp Routes
