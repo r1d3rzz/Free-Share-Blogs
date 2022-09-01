@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
@@ -73,5 +74,25 @@ class UserController extends Controller
         return view('auth.profile',[
             'user' => auth()->user()
         ]);
+    }
+
+    public function edit()
+    {
+        return view('auth.edit',[
+            'user' => auth()->user()
+        ]);
+    }
+
+    public function update(User $user)
+    {
+        $formData = request()->validate([
+            'name' => ['required','min:3','max:20'],
+            'username' => ['required','min:3','max:20',Rule::unique('users','username')->ignore($user->id)],
+            'email' => ['required',Rule::exists('users','email')],
+        ]);
+
+        DB::table('users')->where('username',$user->username)->update($formData);
+
+        return redirect('/user/profile')->with('updated','Updated Successfully');
     }
 }

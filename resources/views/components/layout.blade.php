@@ -21,6 +21,8 @@
 
         <x-noti_banner name="login" />
 
+        <x-noti_banner name="updated" />
+
         <x-noti_banner name="logout" color="danger" />
 
         {{$slot}}

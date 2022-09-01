@@ -9,7 +9,7 @@
         <div class="card-body">
             <b>
                 <p>Auther - <a href="/?user={{$blog->author->username}}"
-                        class="link-primary text-decoration-none">{{$blog->author->name}}</a></p>
+                        class="link-primary text-decoration-none">{{ucwords($blog->author->name)}}</a></p>
                 <p>Category - <a href="/?category={{$blog->category->slug}}"
                         class="link-success text-decoration-none">{{$blog->category->name}}</a></p>
             </b>

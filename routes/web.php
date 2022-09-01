@@ -32,6 +32,8 @@ Route::controller(UserController::class)->group(function(){
     Route::post('/user/register','register')->middleware('guest');
     Route::post('/user/post_login','post_login')->middleware('guest');
     Route::get('/user/profile','show')->middleware('auth');
+    Route::get('/user/edit','edit')->middleware('auth');
+    Route::post('/user/{user:username}/update','update')->middleware('auth');
 });
 
 //for User Comments

@@ -21,7 +21,7 @@
         </div>
         <div class="card-footer d-flex justify-content-end">
             <div>
-                <form action="">
+                <form action="/user/edit">
                     <button type="submit" class="btn btn-secondary">Edit</button>
                 </form>
             </div>
