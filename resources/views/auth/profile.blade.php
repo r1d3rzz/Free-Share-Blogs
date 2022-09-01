@@ -14,8 +14,9 @@
                 <div>Email : {{$user->email}}</div>
             </div>
             @if ($user->avatar)
-            <div style="width: 150px; height: 150px;" class="bg-secondary">
-                <!--- // -->
+            <div class="">
+                <img style="width: 150px; height: 150px; background-position: center;" src="/storage/{{$user->avatar}}"
+                    alt="{{$user->username}}">
             </div>
             @endif
         </div>

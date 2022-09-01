@@ -91,6 +91,14 @@ class UserController extends Controller
             'email' => ['required',Rule::exists('users','email')],
         ]);
 
+        if(request('avatar') !== null){
+            $formData['avatar'] = request()->file('avatar')->store('profiles');
+        }
+
+        if(request('checkBox') == 'true'){
+            $formData['avatar'] = null;
+        }
+
         DB::table('users')->where('username',$user->username)->update($formData);
 
         return redirect('/user/profile')->with('updated','Updated Successfully');

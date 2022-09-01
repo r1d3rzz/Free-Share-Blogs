@@ -30,7 +30,14 @@
 
             @foreach ($comments as $comment)
             <x-card-wrapper>
-                <div class="card-header">{{$comment->author->name}}</div>
+                <div class="card-header d-flex align-items-center">
+                    @if ($comment->author->avatar != null)
+                    <img src="/storage/{{$comment->author->avatar}}"
+                        style="width: 40px; height: 40px; background-position: center;"
+                        alt="{{$comment->author->username}}" class="rounded-circle me-2">
+                    @endif
+                    <div>{{$comment->author->name}}</div>
+                </div>
                 <div class="card-body">
                     <p>{{$comment->body}}</p>
                 </div>
