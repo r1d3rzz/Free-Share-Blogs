@@ -24,13 +24,14 @@ Route::controller(BlogController::class)->group(function(){
     Route::post('/blog/store','store')->middleware('auth');
 });
 
-//for User Login/out and SignUp Routes
+//for User Login/out and SignUp and User Profile Routes
 Route::controller(UserController::class)->group(function(){
     Route::get('/user/login','login')->middleware('guest')->name('login');
     Route::get('/user/logout','logout')->middleware('auth');
     Route::get('/user/signup','signup')->middleware('guest');
     Route::post('/user/register','register')->middleware('guest');
     Route::post('/user/post_login','post_login')->middleware('guest');
+    Route::get('/user/profile','show')->middleware('auth');
 });
 
 //for User Comments

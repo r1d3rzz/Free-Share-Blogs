@@ -67,4 +67,11 @@ class UserController extends Controller
             return redirect('/')->with('login','Welcome Back '.Auth::user()->name);
         }
     }
+
+    public function show()
+    {
+        return view('auth.profile',[
+            'user' => auth()->user()
+        ]);
+    }
 }
