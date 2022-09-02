@@ -4,7 +4,7 @@
     </x-slot>
 
     <x-card-wrapper class="col-md-9 p-3 mx-auto">
-        <form action="/blog/store" method="POST">@csrf
+        <form action="/blog/store" method="POST" enctype="multipart/form-data">@csrf
 
             <x-form.input name="title" />
 
@@ -12,7 +12,13 @@
 
             <x-form.input name="intro" />
 
-            <x-form.textarea name="body" />
+            <x-form.textarea name="body" class="editor" />
+
+            <div class="mb-3">
+                <label for="thumbnail" class="form-label">Thumbnail</label>
+                <input type="file" name="thumbnail" id="thumbnail" class="form-control">
+                <small class="text-muted">(optional)</small>
+            </div>
 
             <div class="mb-3">
                 <label for="category" class="form-label">Category</label>
@@ -27,7 +33,7 @@
             </div>
 
             <div class="d-flex justify-content-end">
-                <button class="btn btn-primary">Upload Blog</button>
+                <button type="submit" class="btn btn-primary">Upload Blog</button>
             </div>
         </form>
     </x-card-wrapper>

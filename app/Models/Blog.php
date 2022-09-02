@@ -16,6 +16,7 @@ class Blog extends Model
         'body',
         'user_id',
         'category_id',
+        'thumbnail',
     ];
 
     public function scopeFilter($query,$filter)

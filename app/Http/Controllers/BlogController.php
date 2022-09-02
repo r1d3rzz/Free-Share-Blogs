@@ -42,6 +42,10 @@ class BlogController extends Controller
 
         $formData['user_id'] = Auth::user()->id;
 
+        if(request('thumbnail') !== null){
+            $formData['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+        }
+
         Blog::create($formData);
 
         return redirect('/')->with('success','Your Blog '.$formData['title'].' is Successfully Uploaded');

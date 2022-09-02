@@ -11,7 +11,7 @@
     <title>{{$title}}</title>
 </head>
 
-<body class="bg-light" id="body">
+<body class="bg-light" id="body" data-editor="ClassicEditor" data-collaboration="false" data-revision-history="false">
 
     <div class="container">
 
@@ -32,6 +32,30 @@
     </div>
 
 
+    <script src="/build/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+        .create( document.querySelector( '.editor' ), {
+
+            licenseKey: '',
+
+
+
+        } )
+        .then( editor => {
+            window.editor = editor;
+
+
+
+
+        } )
+        .catch( error => {
+            console.error( 'Oops, something went wrong!' );
+            console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+            console.warn( 'Build id: ixw12rxj6k81-rq2u9ywp9gac' );
+            console.error( error );
+        } );
+    </script>
     <script src="https://kit.fontawesome.com/2c87f61656.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
