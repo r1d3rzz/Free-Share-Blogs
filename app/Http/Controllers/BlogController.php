@@ -57,4 +57,39 @@ class BlogController extends Controller
 
         return redirect('/')->with('success','Your Blog is Successfully Deleted');
     }
+
+    public function edit(Blog $blog)
+    {
+        return view('blogs.edit',[
+            'blog' => $blog,
+            'categories' => Category::latest()->get(),
+        ]);
+    }
+
+    public function update(Blog $blog)
+    {
+        $formData = request()->validate([
+            'title' => ['required','min:3','max:120'],
+            'slug' => ['required','min:3','max:120',Rule::unique('blogs','slug')->ignore($blog->id)],
+            'intro' => ['required','min:3'],
+            'body' => ['required','min:3'],
+            'category_id' => ['required',Rule::exists('categories','id')],
+        ]);
+
+        $formData['user_id'] = auth()->id();
+
+        if (request('checkBox') == 'true') {
+           $formData['thumbnail'] = null;
+        }else{
+            if(request('thumbnail') == null){
+                $formData['thumbnail'] = $blog->thumbnail;
+            }else{
+                $formData['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+            }
+        }
+
+        $blog->update($formData);
+
+        return redirect("/blogs/$blog->slug")->with('updated','Your '.$formData['title'].' is updated Successfully');
+    }
 }

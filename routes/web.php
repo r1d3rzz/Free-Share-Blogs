@@ -23,6 +23,8 @@ Route::controller(BlogController::class)->group(function(){
     Route::get('/blog/create','create')->middleware('auth');
     Route::post('/blog/store','store')->middleware('auth');
     Route::delete('/blog/{blog:slug}/delete','destroy')->middleware('auth');
+    Route::get('/blog/{blog:slug}/edit','edit')->middleware('auth');
+    Route::post('/blog/{blog:slug}/update','update')->middleware('auth');
 });
 
 //for User Login/out and SignUp and User Profile Routes
