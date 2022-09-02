@@ -50,4 +50,11 @@ class BlogController extends Controller
 
         return redirect('/')->with('success','Your Blog '.$formData['title'].' is Successfully Uploaded');
     }
+
+    public function destroy(Blog $blog)
+    {
+        $blog->delete();
+
+        return redirect('/')->with('success','Your Blog is Successfully Deleted');
+    }
 }

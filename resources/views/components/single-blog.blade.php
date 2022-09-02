@@ -4,13 +4,52 @@
             @if ($blog->thumbnail)
             <img src="/storage/{{$blog->thumbnail}}" alt="{{$blog->slug}}" class="card-img-top">
             @else
-            <h2>{{$blog->title}}</h2>
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h2>{{$blog->title}}</h2>
+                </div>
+
+                @if (auth()->id() == $blog->user_id)
+                <div class="d-flex">
+                    <div class="mx-1">
+                        <form action="/blog/{{$blog->slug}}/delete" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </div>
+                    <div class="mx-1">
+                        <form action="/blog/{{$blog->slug}}/edit">
+                            <button type="submit" class="btn btn-sm btn-outline-warning">Edit</button>
+                        </form>
+                    </div>
+                </div>
+                @endif
+            </div>
             @endif
         </div>
         <div class="card-body">
             @if ($blog->thumbnail)
-            <div>
-                <h2 class="text-center mb-5">{{$blog->title}}</h2>
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <div>
+                    <h2>{{$blog->title}}</h2>
+                </div>
+                @if (auth()->id() == $blog->user_id)
+                <div class="d-flex">
+                    <div class="mx-1">
+                        <form action="/blog/{{$blog->slug}}/delete" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </div>
+                    <div class="mx-1">
+                        <form action="/blog/{{$blog->slug}}/edit">
+                            <button type="submit" class="btn btn-sm btn-outline-warning">Edit</button>
+                        </form>
+                    </div>
+                </div>
+                @endif
             </div>
             @endif
             <b>

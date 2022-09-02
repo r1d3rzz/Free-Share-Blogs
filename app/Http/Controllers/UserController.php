@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -102,5 +103,18 @@ class UserController extends Controller
         DB::table('users')->where('username',$user->username)->update($formData);
 
         return redirect('/user/profile')->with('updated','Updated Successfully');
+    }
+
+    public function show_blogs(User $user)
+    {
+        return view('blogs.userBlogs',[
+            'blogs' => $user->blogs,
+        ]);
+    }
+
+    public function destroy_blogs(Blog $blog){
+        $blog->delete();
+
+        return back()->with('success','Your Blogs is Successfully Deleted');
     }
 }

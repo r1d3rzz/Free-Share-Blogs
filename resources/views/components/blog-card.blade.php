@@ -3,8 +3,26 @@
 <section>
 
     <x-card-wrapper>
-        <div class="card-header">
-            <h2>{{$blog->title}}</h2>
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <div>
+                <h2>{{$blog->title}}</h2>
+            </div>
+            @if (auth()->id() == $blog->author->id)
+            <div class="d-flex">
+                <div class="mx-1">
+                    <form action="/blog/{{$blog->slug}}/delete" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                </div>
+                <div class="mx-1">
+                    <form action="/blog/{{$blog->slug}}/edit">
+                        <button type="submit" class="btn btn-sm btn-outline-warning">Edit</button>
+                    </form>
+                </div>
+            </div>
+            @endif
         </div>
         <div class="card-body">
             <b>

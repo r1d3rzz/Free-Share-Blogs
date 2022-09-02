@@ -22,6 +22,7 @@ Route::controller(BlogController::class)->group(function(){
     Route::get('/blogs/{blog:slug}','show');
     Route::get('/blog/create','create')->middleware('auth');
     Route::post('/blog/store','store')->middleware('auth');
+    Route::delete('/blog/{blog:slug}/delete','destroy')->middleware('auth');
 });
 
 //for User Login/out and SignUp and User Profile Routes
@@ -34,6 +35,8 @@ Route::controller(UserController::class)->group(function(){
     Route::get('/user/profile','show')->middleware('auth');
     Route::get('/user/edit','edit')->middleware('auth');
     Route::post('/user/{user:username}/update','update')->middleware('auth');
+    Route::get('/user/{user:username}/blogs','show_blogs')->middleware('auth');
+    Route::delete('/user/blog/{blog:slug}/delete','destroy_blogs')->middleware('auth');
 });
 
 //for User Comments
